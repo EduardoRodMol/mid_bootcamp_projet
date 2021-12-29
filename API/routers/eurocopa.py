@@ -6,11 +6,30 @@ router = APIRouter()
 
 @router.get("/eurocopa")
 def eurocopa_root():
-    return{"message" : "Bienvenidoa a la Eurocopa"}
-
+    return{"message" : "Bienvenidoa a la Eurocopa Api"}
 
 @router.get("/eurocopa/{partido_stage}")
-def eurocopa_root(partido_stage):
-    print (partido_stage)
-    results = list(db['partidos'].find({"stage":" Final "}))
+def get_ronda(partido_stage):
+    
+    results = list(db['Eurocopa'].find({"stage": partido_stage}))
     return loads (json_util.dumps(results))
+
+@router.get("/eurocopa/seleccion/{seleccion}")
+def get_seleccion(seleccion):   
+    _filter = {
+            "$or":[
+                      {"team_name_home": seleccion },
+                      {"team_name_away":seleccion}
+                  ]
+            }
+            
+    results = list(db['Eurocopa'].find(_filter))    
+    return loads (json_util.dumps(results))
+
+
+@router.get("/eurocopa/list/selecciones")
+def list_selecciones():   
+    results = list(db['Eurocopa'].find({}).distinct("team_name_home"))
+    print(results)
+    return loads (json_util.dumps(results))
+

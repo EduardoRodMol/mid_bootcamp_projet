@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .routers import eurocopa
-#from .src import scrapping
+#from .database.mongo import db
 app = FastAPI()
 
 app.include_router(eurocopa.router)
@@ -8,8 +8,6 @@ app.include_router(eurocopa.router)
 @app.get("/")
 def read_root():
     return {"Hello": "Bienvenido a la API Eurocopa 2020 desarrollada para el midproject"}
-
-
 
 
 
