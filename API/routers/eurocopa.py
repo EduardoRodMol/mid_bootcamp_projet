@@ -1,17 +1,16 @@
 from fastapi import APIRouter
-from database.mongo import db
-from bson  import json_util
+from ..database.mongo import db
+from bson import json_util
+from json import loads
 router = APIRouter()
 
 @router.get("/eurocopa")
-async  def eurocopa_root():
-    return{"message" : "Bienvenidos a la Eurocopa"}
+def eurocopa_root():
+    return{"message" : "Bienvenidoa a la Eurocopa"}
 
 
-@router.get("/eurocopa/{patido_id}")
-async def get_partido(partido_id):
-    print(partido_id)
-    results = list(db['partidos'].find({"pens": partido_id}))
-    print(results)
-    return bson_utils.dumps(results)
-
+@router.get("/eurocopa/{partido_stage}")
+def eurocopa_root(partido_stage):
+    print (partido_stage)
+    results = list(db['partidos'].find({"stage":" Final "}))
+    return loads (json_util.dumps(results))
