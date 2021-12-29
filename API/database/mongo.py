@@ -1,10 +1,5 @@
 from pymongo import MongoClient
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-username = os.getenv("MONGO_USER")
-password = os.getenv("MONGO_PASS")
+#from dotenv import load_dotenv
 #esta url posteriormente habria que facilitarla como parametro
-url =f"mongodb+srv://{username}:{password}@cluster0.l7ahf.mongodb.net/test" 
-db = MongoClient().getdatabase('Prueba2')['partidos']
+url =f"mongodb+srv://Eduardorodmol:GinGon10@cluster0.l7ahf.mongodb.net/test" 
+db = MongoClient(url).get_database('Prueba2')
