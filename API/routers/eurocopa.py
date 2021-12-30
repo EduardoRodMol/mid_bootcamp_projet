@@ -15,15 +15,25 @@ def get_ronda(partido_stage):
     return loads (json_util.dumps(results))
 
 @router.get("/eurocopa/seleccion/{seleccion}")
-def get_seleccion(seleccion):   
+def get_seleccion(seleccion): 
+    print(seleccion)
+    seleccion = seleccion.title() 
+    print(seleccion)
     _filter = {
             "$or":[
                       {"team_name_home": seleccion },
-                      {"team_name_away":seleccion}
+                      {"team_name_away":seleccion},
+                      
                   ]
             }
-            
-    results = list(db['Eurocopa'].find(_filter))    
+    project = {
+        "stage":1,
+        "team_name_home" : 1,
+        "team_name_away" :1,
+        "team_home_score":1,
+        "team_away_score":1
+    }
+    results = list(db['Eurocopa'].find(_filter,project))  
     return loads (json_util.dumps(results))
 
 
