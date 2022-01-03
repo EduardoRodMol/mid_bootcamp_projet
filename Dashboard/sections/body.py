@@ -3,7 +3,7 @@ from sections import sidebars
 from config.funciones  import partidos_ganados
 from data.get import  partidos_jugados
 
-def estadistica_seleccion(comboseleccion ="Spain"):    
+def estadistica_seleccion(comboseleccion ):    
    
     partidos = partidos_jugados(comboseleccion)
     st.text("Estadistica de la seleccion de: "+comboseleccion)

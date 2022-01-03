@@ -1,7 +1,10 @@
 from fastapi import APIRouter
 from ..database.mongo import db
 from bson import json_util
+from bson.objectid  import ObjectId
 from json import loads
+import pandas as pd
+
 router = APIRouter()
 
 @router.get("/eurocopa")
@@ -42,3 +45,35 @@ def list_selecciones():
     #print(results)
     return loads (json_util.dumps(results))
 
+
+
+@router.get("/sede/{partido_id}")
+def recupera_sede(partido_id): 
+    id = partido_id
+    objInstance = ObjectId(id)
+    _filter = { "_id":ObjectId(id)}
+    project = {
+        "team_name_home" : 1,
+        "team_name_away" :1,
+        "team_home_score":1,
+        "team_away_score":1
+    }
+    results = list(db['Eurocopa'].find(_filter, project))
+    df = pd.DataFrame(results)
+       # resultado[] = results[3].split[" "]
+    _filter2= {
+            "sel1": df['team_name_home'][0],
+            "sel2": df['team_name_away'][0]
+            #"marcador": resultado[0],
+           # "sel1": results[1]
+    }
+    print(_filter2)
+    _project2={
+               "sel1":1,
+               "sel2":1,
+               "sede":1
+    }
+    print(_project2)
+    results2 = list(db['sede_en'].find(_filter2,_project2))
+    #print(results2)
+    return loads (json_util.dumps(results2))
