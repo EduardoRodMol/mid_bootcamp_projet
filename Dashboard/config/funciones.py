@@ -1,3 +1,4 @@
+
 def partidos_ganados(partidos,equipo):
     lstpartido = [0,0,0]
     for partido in partidos:
@@ -16,5 +17,5 @@ def partidos_ganados(partidos,equipo):
                 lstpartido[1] = lstpartido[1] +1
             if partido["team_away_score"] < partido["team_home_score"]:
                 lstpartido[2] = lstpartido[2] +1
-
+    
     return lstpartido

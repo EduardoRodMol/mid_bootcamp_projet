@@ -8,17 +8,16 @@ router = APIRouter()
 def eurocopa_root():
     return{"message" : "Bienvenidoa a la Eurocopa Api"}
 
-@router.get("/eurocopa/{partido_stage}")
+@router.get("/eurocopa/partido/{partido_stage}")
 def get_ronda(partido_stage):
-    
+    partido_stage = partido_stage.title()
+    print(partido_stage)
     results = list(db['Eurocopa'].find({"stage": partido_stage}))
     return loads (json_util.dumps(results))
 
-@router.get("/eurocopa/seleccion/{seleccion}")
+@router.get("/eurocopa/selecciones/{seleccion}")
 def get_seleccion(seleccion): 
-    print(seleccion)
     seleccion = seleccion.title() 
-    print(seleccion)
     _filter = {
             "$or":[
                       {"team_name_home": seleccion },
@@ -37,9 +36,9 @@ def get_seleccion(seleccion):
     return loads (json_util.dumps(results))
 
 
-@router.get("/eurocopa/list/selecciones")
+@router.get("/eurocopa/seleccione")
 def list_selecciones():   
     results = list(db['Eurocopa'].find({}).distinct("team_name_home"))
-    print(results)
+    #print(results)
     return loads (json_util.dumps(results))
 
