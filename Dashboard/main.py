@@ -4,6 +4,7 @@ from sections import sidebars
 
 
 
-
+#sidebars.limpieza()
 sidebars.create()
 sidebars.comboselecciones()
+sidebars.mostrar_ronda()
