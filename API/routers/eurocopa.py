@@ -11,12 +11,6 @@ router = APIRouter()
 def eurocopa_root():
     return{"message" : "Bienvenidoa a la Eurocopa Api"}
 
-@router.get("/eurocopa/partido/{partido_stage}")
-def get_ronda(partido_stage):
-    partido_stage = partido_stage.title()
-    print(partido_stage)
-    results = list(db['Eurocopa'].find({"stage": partido_stage}))
-    return loads (json_util.dumps(results))
 
 @router.get("/eurocopa/selecciones/{seleccion}")
 def get_seleccion(seleccion): 
@@ -42,38 +36,57 @@ def get_seleccion(seleccion):
 @router.get("/eurocopa/seleccione")
 def list_selecciones():   
     results = list(db['Eurocopa'].find({}).distinct("team_name_home"))
-    #print(results)
+    return loads (json_util.dumps(results))
+
+@router.get("/eurocopa/partidos")
+def list_selecciones():   
+    project = {
+        "stage":1,
+        "team_name_home" : 1,
+        "team_name_away" :1,
+        "_id":0
+    }
+    results = list(db['Eurocopa'].find({}, project))
+    return loads (json_util.dumps(results))
+
+@router.get("/eurocopa/ronda")
+def list_rondas():   
+    results = list(db['Eurocopa'].find({}).distinct("stage"))
+    return loads (json_util.dumps(results))
+
+@router.get("/eurocopa/partidosronda/{comboronda}")
+def list_patidosxrondas(comboronda):  
+    _filter= {
+      "stage": comboronda      
+    } 
+    _project = {
+        
+        "team_name_home" : 1,
+        "team_name_away" :1,       
+        "_id":0
+    }
+    results = list(db['Eurocopa'].find(_filter,_project))
     return loads (json_util.dumps(results))
 
 
-
-@router.get("/sede/{partido_id}")
-def recupera_sede(partido_id): 
-    id = partido_id
-    objInstance = ObjectId(id)
-    _filter = { "_id":ObjectId(id)}
-    project = {
-        "team_name_home" : 1,
-        "team_name_away" :1,
-        "team_home_score":1,
-        "team_away_score":1
-    }
-    results = list(db['Eurocopa'].find(_filter, project))
-    df = pd.DataFrame(results)
-       # resultado[] = results[3].split[" "]
+@router.get("/sede/{sfiltro}")
+def recupera_sede(sfiltro): 
+    resultado = list()
+    resultado= sfiltro.split("-")
+    sel1= resultado[0]
+    sel2 = resultado[1]
     _filter2= {
-            "sel1": df['team_name_home'][0],
-            "sel2": df['team_name_away'][0]
-            #"marcador": resultado[0],
-           # "sel1": results[1]
+            "sel1":sel1.strip(),
+            "sel2": sel2.strip()
+                    
     }
-    print(_filter2)
+   
     _project2={
                "sel1":1,
                "sel2":1,
-               "sede":1
+               "sede":1,
+               "_id":0
     }
-    print(_project2)
+    
     results2 = list(db['sede_en'].find(_filter2,_project2))
-    #print(results2)
     return loads (json_util.dumps(results2))

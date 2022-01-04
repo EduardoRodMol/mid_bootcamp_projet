@@ -2,6 +2,9 @@ import streamlit as st
 from sections import sidebars
 from config.funciones  import partidos_ganados
 from data.get import  partidos_jugados
+from data.geocode import find_sede
+import pandas as pd
+
 
 def estadistica_seleccion(comboseleccion ):    
    
@@ -14,5 +17,25 @@ def estadistica_seleccion(comboseleccion ):
     col2.write("Matches drawn by " + comboseleccion + ": " + str(lstresultados[1]))
     col2.write("Matches lost by " + comboseleccion + ": " + str(lstresultados[2]))
 
-def sede(sedes): 
-    st.text (sedes['sede'])
+def sede(loc): 
+    print(loc)
+    localizacion = find_sede(loc)
+    params = {
+        "location":{
+            "type":"Point",
+            "coordinates":localizacion
+        }
+    }
+    latitude = localizacion[0]
+    longitude = localizacion[1]
+    df = pd.DataFrame({
+        "lat":[longitude],
+        "lon":[latitude]
+    })
+
+    st.map(df)
+  
+   # df = pd.DataFrame(
+    #    [localizacion[0],localizacion[1]],
+     #   columns=["lat","lon"])
+    #st.map(df)
