@@ -2,7 +2,7 @@ import streamlit as st
 from data import get# lista_selecciones, ronda, partidos, recibe_sede
 from sections import body
 from config import pdf
-from sections import variables_globales
+
 
 def create():
     sidebar = st.sidebar.header("Eurocopa 2020")

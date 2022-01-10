@@ -4,7 +4,7 @@ from config.estadisticalocal  import partidos_ganados
 from data.get import  partidos_jugados
 from data.geocode import find_sede
 import pandas as pd
-from sections import variables_globales as vg
+
 
 
 def estadistica_seleccion(comboseleccion ): 
