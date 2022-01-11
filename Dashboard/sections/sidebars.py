@@ -1,7 +1,7 @@
 import streamlit as st
 from data import get# lista_selecciones, ronda, partidos, recibe_sede
 from sections import body
-from config import pdf
+
 
 
 def create():
@@ -42,5 +42,3 @@ def buscar_sede(sfiltro):
     body.sede(localizacion)
     
     
-def descargapdf():
-    pdf.generaficheropdf()

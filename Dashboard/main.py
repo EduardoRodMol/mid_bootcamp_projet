@@ -12,6 +12,3 @@ sidebars.mostrar_ronda()
     
  
 
-export_as_pdf = st.sidebar.button("Export Report")
-if export_as_pdf:
-    sidebars.descargapdf()
