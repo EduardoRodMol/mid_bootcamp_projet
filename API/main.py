@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import eurocopa
+from routers import eurocopa
 #from .database.mongo import db
 app = FastAPI()
 
