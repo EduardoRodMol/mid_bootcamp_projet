@@ -1,4 +1,8 @@
 # mid_bootcamp_projet
+
+<p align="center">
+  <img width="400" src="/img/OIP.jpg" alt="mid_bootcamp_project">
+</p>
 This repository contains a Python Streamlit application for analyzing Eurocopa data, as well as Jupyter Notebooks for scraping and cleaning the data.
 
 I have used fastapi in order to create the endpoints which calls to the data located in a Atlas cloud database.
