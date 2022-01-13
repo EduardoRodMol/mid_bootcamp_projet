@@ -7,7 +7,7 @@ username = os.getenv("MONGO_USER")
 password = os.getenv("MONGO_PASS")
 #esta url posteriormente habria que facilitarla como parametro
 
-url = f'mongodb+srv://{username}:{password}@cluster0.l7ahf.mongodb.net/test'
+url = f'mongodb+srv://{username}:{password}@cluster0.l7ahf.mongodb.net'
 
 client = MongoClient(url)
 db = client.get_database("midproject")

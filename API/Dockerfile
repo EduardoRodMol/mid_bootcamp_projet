@@ -10,4 +10,6 @@ WORKDIR /miapi
 RUN pip install -r requirements.txt
 
 ## This is the command that will be executed in "docker run <imagename>"
-CMD [ "uvicorn", "main:app" ]
+ENV PORT=8080
+
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
