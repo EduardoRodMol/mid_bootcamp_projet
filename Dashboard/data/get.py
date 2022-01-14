@@ -1,18 +1,19 @@
-from config.api import urlapi
+
+from config.api import  urlheroku 
 import requests
 
 
 def lista_selecciones():
-    return requests.get(urlapi+"/eurocopa/seleccione").json()
+    return requests.get(urlheroku+"/eurocopa/seleccione").json()
 
 def partidos_jugados(seleccion):
-    return requests.get(urlapi + "/eurocopa/selecciones/" + seleccion).json()
+    return requests.get(urlheroku + "/eurocopa/selecciones/" + seleccion).json()
     
 def ronda():
-    return requests.get(urlapi + "/eurocopa/ronda").json()
+    return requests.get(urlheroku + "/eurocopa/ronda").json()
 
 def partidos(comboronda):
-    return requests.get(urlapi + "/eurocopa/partidosronda/" + comboronda).json()
+    return requests.get(urlheroku + "/eurocopa/partidosronda/" + comboronda).json()
 
 def recibe_sede(sfiltro):
-    return requests.get(urlapi + "/sede/"+ sfiltro).json()
+    return requests.get(urlheroku + "/sede/"+ sfiltro).json()

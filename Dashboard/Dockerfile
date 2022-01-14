@@ -1,0 +1,9 @@
+FROM python:3.9.7
+
+ADD ./ /Dashboard
+
+WORKDIR /Dashboard
+
+RUN pip install -r requirements.txt
+
+CMD ["sh","-c","streamlit run --server.port $PORT main.py"]
