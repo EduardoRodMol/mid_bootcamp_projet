@@ -14,6 +14,9 @@ def eurocopa_root():
 
 @router.get("/eurocopa/selecciones/{seleccion}")
 def get_seleccion(seleccion): 
+    """
+    This function get the matches played for this selection, with the score, withput penalties
+    """
     seleccion = seleccion.title() 
     _filter = {
             "$or":[
@@ -35,11 +38,17 @@ def get_seleccion(seleccion):
 
 @router.get("/eurocopa/seleccione")
 def list_selecciones():   
+    """
+    This function get the selections whihc played the Eurocopa 2020
+    """
     results = list(db['Eurocopa'].find({}).distinct("team_name_home"))
     return loads (json_util.dumps(results))
 
 @router.get("/eurocopa/partidos")
-def list_selecciones():   
+def list_selecciones():  
+    """
+    This function get all matches and stage
+    """ 
     project = {
         "stage":1,
         "team_name_home" : 1,
@@ -51,11 +60,17 @@ def list_selecciones():
 
 @router.get("/eurocopa/ronda")
 def list_rondas():   
+    """
+    This function get differents stages
+    """ 
     results = list(db['Eurocopa'].find({}).distinct("stage"))
     return loads (json_util.dumps(results))
 
 @router.get("/eurocopa/partidosronda/{comboronda}")
 def list_patidosxrondas(comboronda):  
+    """
+    This function get matches for stage
+    """ 
     _filter= {
       "stage": comboronda      
     } 
@@ -71,6 +86,9 @@ def list_patidosxrondas(comboronda):
 
 @router.get("/sede/{sfiltro}")
 def recupera_sede(sfiltro): 
+    """
+    This function get the sede of thge match
+    """ 
     resultado = list()
     resultado= sfiltro.split("-")
     sel1= resultado[0]

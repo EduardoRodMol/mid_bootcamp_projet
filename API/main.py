@@ -1,9 +1,22 @@
 from fastapi import FastAPI
 from routers import eurocopa
 #from .database.mongo import db
-app = FastAPI()
 
-app.include_router(eurocopa.router)
+
+description = "This API provide the endponts to generate the streamlit "
+def create_aplication():
+
+    app = FastAPI(
+         contact={ 
+                "name":"Eduardo Rodriguez Molina",
+                 "url" :"https://github.com/EduardoRodMol/mid_bootcamp_projet"},
+         description= description
+                        )
+    app.include_router(eurocopa.router)                    
+    return app
+
+
+app = create_aplication()
 # cada endpoint es una funcion - 
 @app.get("/")
 def read_root():
