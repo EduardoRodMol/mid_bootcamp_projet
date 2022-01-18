@@ -5,20 +5,21 @@ from data.get import  partidos_jugados
 from data.geocode import find_sede
 import pandas as pd
 from data import get
+from config.grafica import gfgoles
 
-def estadistica_seleccion(comboseleccion ): 
+def estadistica_seleccion(comboseleccion:str ): 
 
     col1,col2 = st.columns(2)   
     if comboseleccion !="":
          partidos = partidos_jugados(comboseleccion)
-   # st.text("Estadistica de la seleccion de: "+ str(comboseleccion))
-         
-         col1.write("Matches played by " + comboseleccion + ": " + str(len(partidos)))
-         lstresultados=partidos_ganados(partidos,comboseleccion)
+         col1.write("Matches played by " + comboseleccion + ": " + str(len(partidos)))         
+         lstresultados,goles=partidos_ganados(partidos,comboseleccion)
+         col1.write("Goals : " + str(lstresultados[3]))
          col2.write("Matches won by " + comboseleccion + ": " + str(lstresultados[0]))
          col2.write("Matches drawn by " + comboseleccion + ": " + str(lstresultados[1]))
          col2.write("Matches lost by " + comboseleccion + ": " + str(lstresultados[2]))
-            
+         gfgoles(goles)
+         
 def comboseleccion():
     msg_sele = "Estadisticas de selecciones "    
     selecciones = [ seleccion for seleccion in get.lista_selecciones()]
@@ -74,7 +75,4 @@ def sedear(loc):
 
     st.map(df)
   
-   # df = pd.DataFrame(
-    #    [localizacion[0],localizacion[1]],
-     #   columns=["lat","lon"])
-    #st.map(df)
+  
