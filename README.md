@@ -1,4 +1,4 @@
-# mid_bootcamp_projet
+# Streamlit - data analyst
 
 <p align="center">
   <img width="400" src="/img/OIP.jpg" alt="mid_bootcamp_project">
