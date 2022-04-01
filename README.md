@@ -3,8 +3,12 @@
 <p align="center">
   <img width="400" src="/img/OIP.jpg" alt="mid_bootcamp_project">
 </p>
-This repository contains a Python Streamlit application for analyzing Eurocopa data, as well as Jupyter Notebooks for scraping and cleaning the data.
+This repository contains a Python Streamlit application for analyzing Eurocopa data.
+In  order to do that I have used a kaggle dataset which have been fed with wikipedia information using web scraping using BeautifulSoup library  (web_scrapping.ipynb) as well as cleaning the data(VisualizacionDedatos.ipynb).
 
-I have used fastapi in order to create the endpoints which calls to the data located in a Atlas cloud database.
+This information was loaded in a MongoDB Atlas cloud (alimentar_bbdd.ipynb) and the information was recovery through endpoints using Fastapi (eurocopa.py)
 
-In this aplication you can see indivials statistics of the selecction whihc played the cup, and also you can see the where all the matches where played. This information  was scraped using  BeautifulSoup library, and for the geolocalitation I used an API provided by Nominatim
+All this information is loaded into a docker container and uploaded to an heroku website where the api  will be ready to be consume by the streamlit dashboard. For the geolocalitation I used an API provided by Nominatim
+
+
+
