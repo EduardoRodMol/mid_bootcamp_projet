@@ -13,7 +13,7 @@ All this information is loaded into a docker container and uploaded to an heroku
 <p align="center">
   <img width="300" src="/img/postman.jpg" alt="mid_bootcamp_project">
 </p>
-where the api  will be ready to be consumed by the streamlit dashboard. For the geolocalitation I used an API provided by Nominatim.
+where the api  will be ready to be consumed by the streamlit dashboard at https://euro-dashboard.herokuapp.com/. For the geolocalitation I used an API provided by Nominatim.
 <p align="center">
   <img width="300" src="/img/Geolocalizacion.jpg" alt="mid_bootcamp_project">
 </p>
