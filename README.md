@@ -1,4 +1,5 @@
-# Streamlit - data analyst
+# Streamlit - Data clearing - Web  Scraping 
+# MongoDb - Docker - Api - Heroku - Postman
 
 <p align="center">
   <img width="400" src="/img/OIP.jpg" alt="mid_bootcamp_project">
@@ -12,7 +13,12 @@ All this information is loaded into a docker container and uploaded to an heroku
 <p align="center">
   <img width="300" src="/img/postman.jpg" alt="mid_bootcamp_project">
 </p>
-where the api  will be ready to be consumed by the streamlit dashboard. For the geolocalitation I used an API provided by Nominatim
+where the api  will be ready to be consumed by the streamlit dashboard. For the geolocalitation I used an API provided by Nominatim.
+<p align="center">
+  <img width="300" src="/img/Geolocalizacion.jpg" alt="mid_bootcamp_project">
+</p>
+
+It is important to keep in mind that the main objetive of this project is to show tha differents tools I'm able to use more than the beauty of the dashboard
 
 
 
